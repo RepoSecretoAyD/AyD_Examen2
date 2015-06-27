@@ -57,10 +57,10 @@ namespace AyD_Examen2.SpellOutCheckAmount
                }
            }
            else
-               numberInLetters = "ZERO ";
+               numberInLetters = "ZERO";
            if (decimals.Equals("0"))
                decimals = "0";
-           return (numberInLetters + (decimals.Equals("0") ? "" : "AND " + decimals + "/100 DOLLARS")).Trim();
+           return numberInLetters.Trim() + (decimals.Equals("0") ? "" : " AND " + decimals + "/100 DOLLARS");
        }
 
        public static Tuple<int, int> SplitNumberInIntegerAndDecimals(double number)
@@ -173,7 +173,7 @@ namespace AyD_Examen2.SpellOutCheckAmount
             var dictionaryNumber = new Dictionary<int, string>
             {
                 {20, "TWENTY"},
-                {30, "THIRTY "},
+                {30, "THIRTY"},
                 {40, "FORTY"},
                 {50, "FIFTY"},
                 {60, "SIXTY"},
