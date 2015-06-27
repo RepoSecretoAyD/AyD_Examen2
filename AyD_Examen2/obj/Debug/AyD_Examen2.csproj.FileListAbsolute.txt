@@ -5,3 +5,4 @@ c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\o
 c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.csproj.GenerateResource.Cache
 c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.exe
 c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.pdb
+C:\Users\Slyther\Documents\Visual Studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.csprojResolveAssemblyReference.cache
