@@ -1,42 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AyD_Examen2.Roman_Converter
 {
     public class RomanConverter
     {
-        public static string IntToRoman(int number)
-        {
-            if (number > 3999)
-                return "Error";
-
-            var roman = "";
-
-            var valoresInts = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-
-            var valoresRomanos = new string[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-
-            for (var i = 0; i < 13; i++)
+        static readonly Dictionary<int, string> ArabicToRomanReferenceDictionary = new Dictionary<int, string>
             {
-                while (number >= valoresInts[i])
-                {
-                    number = number - valoresInts[i];
-                    roman = roman + valoresRomanos[i];
-                }
-            }
-            return roman;
-        }
+                {1, "I"},
+                {4, "IV"},
+                {5, "V"},
+                {9, "IX"},
+                {10, "X"},
+                {40, "XL"},
+                {50, "L"},
+                {90, "XC"},
+                {100, "C"},
+                {400, "CD"},
+                {500, "D"},
+                {900, "CM"},
+                {1000, "M"}
+            };
 
-        public static int RomanToInt(string roman)
-        {
-            if (roman.Equals("I was not programmed for that!"))
-                return -1;
-            if (roman.Equals(""))
-                return 0;
-            var referenceDictionary = new Dictionary<char, int>
+        static readonly Dictionary<char, int> RomanToArabicReferenceDictionary = new Dictionary<char, int>
             {
                 {'I', 1},
                 {'V', 5},
@@ -46,35 +32,54 @@ namespace AyD_Examen2.Roman_Converter
                 {'D', 500},
                 {'M', 1000}
             };
-            roman = roman.ToUpper().Trim();
 
-            for (int i = 0; i < roman.Length; i++)
+        public static string IntToRoman(int number)
+        {
+            if (number > 3999 || number < 0)
+                return "Invalid Input";
+            var roman = "";
+            
+            for (var i = 12; i >= 0; i--)
             {
-                if (!referenceDictionary.ContainsKey(roman.ElementAt(i)))
+                while (number >= ArabicToRomanReferenceDictionary.Keys.ElementAt(i))
                 {
-                    return -1;
+                    number = number - ArabicToRomanReferenceDictionary.Keys.ElementAt(i);
+                    roman = roman + ArabicToRomanReferenceDictionary[ArabicToRomanReferenceDictionary.Keys.ElementAt(i)];
                 }
             }
-            if (roman.Contains("IIII") || roman.Contains("VV") || roman.Contains("XXXX") || roman.Contains("LL")
-             || roman.Contains("CCCC") || roman.Contains("DD") || roman.Contains("MMMM"))
-                return -5;
-            int toReturn = 0;
-            for (int i = 0; i < roman.Length; i++)
+            return roman;
+        }
+
+        public static int RomanToInt(string roman)
+        {
+            if (roman.Equals("Invalid Input"))
+                return -1;
+            if (roman.Equals(""))
+                return 0;
+            roman = roman.ToUpper().Trim();
+            if (roman.Where((t, i) => !RomanToArabicReferenceDictionary.ContainsKey(roman.ElementAt(i))).Any()
+                || roman.Contains("IIII") || roman.Contains("VV") || roman.Contains("XXXX") || roman.Contains("LL")
+                || roman.Contains("CCCC") || roman.Contains("DD") || roman.Contains("MMMM"))
+            {
+                return -1;
+            }
+            var toReturn = 0;
+            for (var i = 0; i < roman.Length; i++)
             {
                 if (i < roman.Length - 1)
                 {
-                    if (referenceDictionary[roman.ElementAt(i)] < referenceDictionary[roman.ElementAt(i + 1)])
+                    if (RomanToArabicReferenceDictionary[roman.ElementAt(i)] < RomanToArabicReferenceDictionary[roman.ElementAt(i + 1)])
                     {
                         if (roman.ElementAt(i).Equals('V') || roman.ElementAt(i).Equals('L') ||
                             roman.ElementAt(i).Equals('D'))
                             return -5;
-                        toReturn += referenceDictionary[roman.ElementAt(i + 1)] -
-                                    referenceDictionary[roman.ElementAt(i)];
+                        toReturn += RomanToArabicReferenceDictionary[roman.ElementAt(i + 1)] -
+                                    RomanToArabicReferenceDictionary[roman.ElementAt(i)];
                         i++;
                         continue;
                     }
                 }
-                toReturn += referenceDictionary[roman.ElementAt(i)];
+                toReturn += RomanToArabicReferenceDictionary[roman.ElementAt(i)];
             }
             return toReturn;
         }

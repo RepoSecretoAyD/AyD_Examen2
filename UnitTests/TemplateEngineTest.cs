@@ -11,7 +11,7 @@ namespace UnitTests
         public void TemplateEngineSingleReplacementTest()
         {
             var mapOfVariables = new Dictionary<string, string> {{"name", "Cenk"}};
-            var expected = "Hello Cenk";
+            const string expected = "Hello Cenk";
             var actual = TemplateEngine.Evaluate("Hello {$name}", mapOfVariables);
             Assert.AreEqual(expected, actual);
         }
@@ -24,7 +24,7 @@ namespace UnitTests
                 { "firstName","Cenk" },
                 { "lastName","Civici" }
             };
-            var expected = "Hello Cenk Civici";
+            const string expected = "Hello Cenk Civici";
             var actual = TemplateEngine.Evaluate("Hello {$firstName} {$lastName}", mapOfVariables);
             Assert.AreEqual(expected, actual);
         }
@@ -41,7 +41,7 @@ namespace UnitTests
         public void TemplateEngineHeyDawgReplacementTest()
         {
             var mapOfVariables = new Dictionary<string, string> { { "name", "Cenk" } };
-            var expected = "Hello {$Cenk}";
+            const string expected = "Hello {$Cenk}";
             var actual = TemplateEngine.Evaluate("Hello {${$name}}", mapOfVariables);
             Assert.AreEqual(expected, actual);
         }
@@ -54,7 +54,7 @@ namespace UnitTests
                 { "firstName","Cenk" },
                 { "lastName","Civici" }
             };
-            var expected = "Hello {$Cenk} Civici";
+            const string expected = "Hello {$Cenk} Civici";
             var actual = TemplateEngine.Evaluate("Hello {${$firstName}} {$lastName}", mapOfVariables);
             Assert.AreEqual(expected, actual);
         }
@@ -67,7 +67,7 @@ namespace UnitTests
                 { "firstName","Cenk" },
                 { "lastName","Civici" }
             };
-            var expected = "Hello Cenk {$Civici}";
+            const string expected = "Hello Cenk {$Civici}";
             var actual = TemplateEngine.Evaluate("Hello {$firstName} {${$lastName}}", mapOfVariables);
             Assert.AreEqual(expected, actual);
         }
