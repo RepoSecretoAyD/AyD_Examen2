@@ -1,0 +1,7 @@
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\bin\Debug\AyD_Examen2.exe.config
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\bin\Debug\AyD_Examen2.exe
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\bin\Debug\AyD_Examen2.pdb
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.Properties.Resources.resources
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.csproj.GenerateResource.Cache
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.exe
+c:\users\slyther\documents\visual studio 2013\Projects\AyD_Examen2\AyD_Examen2\obj\Debug\AyD_Examen2.pdb
